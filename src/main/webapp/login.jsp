@@ -16,17 +16,7 @@
   <body>
     <!-- Section: Design Block -->
     <section class="text-center text-lg-start">
-      <style>
-        .cascading-right {
-          margin-right: -50px;
-        }
 
-        @media (max-width: 991.98px) {
-          .cascading-right {
-            margin-right: 0;
-          }
-        }
-      </style>
 
       <!-- Jumbotron -->
       <div class="container py-4">
@@ -41,14 +31,31 @@
             >
               <div class="card-body p-5 shadow-5 text-center">
                 <h2 class="fw-bold mb-5">Sign in now</h2>
-                <form>
+                <form action="./login" method="post">
+                  <% String error=(String) request.getAttribute("error");%>
+                  <% String success=(String) request.getAttribute("success");%>
+
+                  <% if (error!=null) { %>
+                  <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                  </div>
+                  <% } %>
+
+                  <% if (success!=null) { %>
+                  <div class="alert alert-success" role="alert">
+                    <%= success %>
+                  </div>
+                  <% } %>
+
                   <!-- Email input -->
                   <div class="input-group has-validation mb-3">
                     <div class="col form-floating is-invalid">
-                      <input
+                      <%--@declare id="floatinginputgroup2"--%><input
                         type="email"
                         id="form3Example3"
                         class="form-control"
+                        name="login"
+                        value="user1@gmail.com"
                         placeholder="Email"
                         required
                       />
@@ -65,6 +72,8 @@
                       <input
                       type="password"
                       id=""
+                      name="pwd"
+                      value="1234"
                       class="form-control"
                       placeholder="Password"
                         required
@@ -96,12 +105,12 @@
 
                     <div class="col">
                       <!-- Simple link -->
-                      <a href="#!">Forgot password?</a>
+                      <a href="slf!">Forgot password?</a>
                     </div>
                   </div>
 
                   <!-- Submit button -->
-                  <button type="button" class="btn btn-primary btn-block mb-4" style="background-color: #C13584;">
+                  <button type="submit" class="btn btn-primary btn-block mb-4" style="background-color: #C13584;">
                     Sign in
                   </button>
                 </form>

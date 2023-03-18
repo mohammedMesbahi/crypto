@@ -34,55 +34,80 @@
             <div class="row d-flex justify-content-center">
               <div class="col-lg-8">
                 <h2 class="fw-bold mb-1">Sign up now</h2>
-                <form>
+                <form action="./register" method="post">
+                  <% String error=(String) request.getAttribute("error");%>
+                  <% if (error!=null) { %>
+                  <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                  </div>
+                  <% } %>
+                  <!-- 2 column grid layout with text inputs for the first names -->
+                  <div class="row row-cols-1 mb-2">
+                    <div class="mb-2 col">
+                      <div class="input-group has-validation">
+                        <div class="col form-floating is-invalid">
+                          <input
+                                  type="text"
+                                  class="form-control"
+                                  id="floatingInputGroup2"
+                                  name="name"
+                                  value="user1"
+                                  placeholder="Name"
+                                  required
+                          />
+                          <label for="floatingInputGroup2">Name</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="row row-cols-2">
                     <!-- Email input -->
-                    <div class="input-group has-validation">
+                    <div class="input-group has-validation mb-2">
                       <div class="col form-floating is-invalid">
-                        <%--@declare id="floatinginputgroup2"--%><input
+                        <%--@declare id="floatinginputgroup2"--%>
+                          <input
                                 type="email"
                                 id="form3Example3"
+                                name="login"
+                                value="user1@gmail.com"
                                 class="form-control"
-                                placeholder="Email"
                                 required
                         />
-                        <label for="floatingInputGroup2">Email address</label>
-                      </div>
-                      <div class="col-3 invalid-feedback text-start">
-                        Please choose a valid Email.
+                          <label for="floatingInputGroup2">Email</label>
                       </div>
                     </div>
                   </div>
 
                   <!-- Password input -->
-                  <div class="row row-cols-2">
-                    <div class="col input-group has-validation">
+                  <div class="row row-cols-2 mb-2">
+                    <div class="col input-group has-validation mb-2">
                       <div class="col form-floating is-invalid">
                         <input
                                 type="password"
-                                id=""
+                                id="1234"
+                                name="pwd"
+                                value="1234"
                                 class="form-control"
                                 placeholder="Password"
                                 required
                         />
                         <label for="floatingInputGroup2">password</label>
-                      </div>
-                      <div class="col-3 invalid-feedback text-start">
-                        Please choose a valid password.
                       </div>
                     </div>
-                    <div class="col input-group has-validation">
+                    <div class="col input-group has-validation mb-2">
                       <div class="col form-floating is-invalid">
                         <input
                                 type="password"
+                                name="pwd2"
                                 id="l"
+                                value="1234"
                                 class="form-control"
                                 placeholder="Password"
                                 required
                         />
                         <label for="floatingInputGroup2">password</label>
                       </div>
-                      <div class="col-3 invalid-feedback text-start">
+                      <div class="col-3 invalid-feedback text-start visually-hidden">
                         passwords do not match
                       </div>
                     </div>
